@@ -11,17 +11,9 @@ mongoose.connect('mongodb://localhost:27017/nodeapi', { useNewUrlParser: true, u
 // Registra o model
 requireDir('./src/models');
 
-const Product = mongoose.model('Product');
-
-// Primeira rota definida
-app.get('/', (request, response) => {
-   Product.create({
-      title: 'React Native',
-      description: 'Build native apps with React',
-      url: 'https://github.com/facebook/react-native'
-   });
-
-   return response.send('Hello Rocketseat');
-});
+// Rotas
+// O use eh como se fosse um wildcard (coringa)
+// o use aceita TODAS as resquisicoes
+app.use('/api', require('./src/routes'));
 
 app.listen(3001);
