@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const mongoosePaginate = require('mongoose-paginate');
 
 // Definindo um Model (tabela) para o banco de dados
 // Schema -> quais sao os campos que uma tabela do produto pode ter e que tipos de valores
@@ -21,6 +22,8 @@ const ProductSchema = new mongoose.Schema({
       default: Date.now
    }
 });
+
+ProductSchema.plugin(mongoosePaginate);
 
 // Registrar o model na aplicacao
 mongoose.model('Product', ProductSchema);
