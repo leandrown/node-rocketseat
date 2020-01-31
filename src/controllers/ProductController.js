@@ -7,5 +7,12 @@ module.exports = {
       const products = await Product.find();
 
       return response.json(products);
+   },
+
+   async store(request, response) {
+      // Criação de produtos/cadastro
+      const product = await Product.create(request.body);
+
+      return response.json(product);
    }
 };
